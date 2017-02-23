@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            function students(){
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:5000/students",
+                    success: function (data) {
+                        var div = document.getElementById("result");
+                        div.innerHTML = "";
+                        var students = JSON.parse(data);
+                        for(var s in students){
+                            var newElement = document.createElement('h3');
+                            newElement.innerHTML = JSON.stringify(students[s]);
+                            div.appendChild(newElement);
+                        }
+                  }
+                });
+            }
+
+            function departments(){
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:5000/departments",
+                    success: function (data) {
+                        var div = document.getElementById("result");
+                        div.innerHTML = "";
+                        var departments = JSON.parse(data);
+                        for(var d in departments){
+                            var newElement = document.createElement('h3');
+                            newElement.innerHTML = JSON.stringify(departments[d]);
+                            div.appendChild(newElement);
+                        }
+                  }
+                });
+            }
+
+            function teachers(){
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:5000/teachers",
+                    success: function (data) {
+                        var div = document.getElementById("result");
+                        div.innerHTML = "";
+                        var teachers = JSON.parse(data);
+                        for(var d in teachers){
+                            var newElement = document.createElement('h3');
+                            newElement.innerHTML = JSON.stringify(teachers[d]);
+                            div.appendChild(newElement);
+                        }
+                  }
+                });
+            }
+
+         </script>
+    </head>
+    <body>
+        <a href="#" onclick="return students();">Students</a>
+        <a href="#" onclick="return departments();">Departments</a>
+        <a href="#" onclick="return teachers();">Teachers</a>
+        <div id="result"></div>
+    </body>
+</html>
